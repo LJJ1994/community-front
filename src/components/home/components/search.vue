@@ -9,182 +9,182 @@
         <input type="submit" value="搜索" class="search-btn">
       </form>
     </div>
-<!--    <div class="search-has-input" v-if="hasInput">-->
-<!--      <ul class="search-has-input-group">-->
-<!--        <li class="search-has-input-item">我服了</li>-->
-<!--        <li class="search-has-input-item">我服了他</li>-->
-<!--        <li class="search-has-input-item">我服了。</li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--    <div class="search-no-input" v-else>-->
-<!--      <div class="hot-search">-->
-<!--        <p>大家都在搜</p>-->
-<!--        <div class="hot-list">-->
-<!--          <ul class="record-group">-->
-<!--            <li class="record-item">1 皮小妹专访骚男</li>-->
-<!--            <li class="record-item">2 皮皮虾官方小酒</li>-->
-<!--            <li class="record-item">3 皮皮虾创造周</li>-->
-<!--            <li class="record-item">4 让人</li>-->
-<!--            <li class="record-item">5 头像</li>-->
-<!--            <li class="record-item">6 表情包</li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="search-record">-->
-<!--        <p class="record-title">搜索记录</p>-->
-<!--        <span class="delete-record">-->
-<!--          <img src="../../../assets/images/delete.svg" alt="">-->
-<!--        </span>-->
-<!--      </div>-->
-<!--      <div class="search-record-list">-->
-<!--        <ul class="search-record-group">-->
-<!--          <li class="search-record-item">呵呵</li>-->
-<!--          <li class="search-record-item">皮小子</li>-->
-<!--          <li class="search-record-item">皮皮虾</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--          <li class="search-record-item">我不皮</li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--    </div>-->
-      <section class="post-list">
-        <ul class="post-wrapper">
-          <li class="post-item">
-            <div class="item-top">
-              <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
-              <div class="item-top-middle">
-                <span>淘票票</span>
-                <div class="item-time-user">
-                  <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
-                </div>
-              </div>
-              <span class="title-icon"> > </span>
-            </div>
-            <div class="item-content">
-              <h4>《丑娃娃国庆欢乐上线》</h4>
-              <div class="item-content-video">
-                该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
-              </div>
-            </div>
-            <div class="item-bottom">
-              <ul class="item-bottom-list">
-                <li class="item-bottom-like">
-                  <img src="../../../assets/images/like.svg" alt="">   2
-                </li>
-                <li class="item-bottom-unlike">
-                  <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
-                <li class="item-bottom-comment">
-                  <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
-                <li class="item-bottom-share">
-                  <img src="../../../assets/images/share.svg" alt=""> 分享</li>
-              </ul>
-            </div>
-          </li>
-          <li class="post-item">
-            <div class="item-top">
-              <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
-              <div class="item-top-middle">
-                <span>淘票票</span>
-                <div class="item-time-user">
-                  <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
-                </div>
-              </div>
-              <span class="title-icon"> > </span>
-            </div>
-            <div class="item-content">
-              <h4>《丑娃娃国庆欢乐上线》</h4>
-              <div class="item-content-video">
-                该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
-              </div>
-            </div>
-            <div class="item-bottom">
-              <ul class="item-bottom-list">
-                <li class="item-bottom-like">
-                  <img src="../../../assets/images/like.svg" alt="">   2
-                </li>
-                <li class="item-bottom-unlike">
-                  <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
-                <li class="item-bottom-comment">
-                  <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
-                <li class="item-bottom-share">
-                  <img src="../../../assets/images/share.svg" alt=""> 分享</li>
-              </ul>
-            </div>
-          </li>
-          <li class="post-item">
-            <div class="item-top">
-              <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
-              <div class="item-top-middle">
-                <span>淘票票</span>
-                <div class="item-time-user">
-                  <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
-                </div>
-              </div>
-              <span class="title-icon"> > </span>
-            </div>
-            <div class="item-content">
-              <h4>《丑娃娃国庆欢乐上线》</h4>
-              <div class="item-content-video">
-                该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
-              </div>
-            </div>
-            <div class="item-bottom">
-              <ul class="item-bottom-list">
-                <li class="item-bottom-like">
-                  <img src="../../../assets/images/like.svg" alt="">   2
-                </li>
-                <li class="item-bottom-unlike">
-                  <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
-                <li class="item-bottom-comment">
-                  <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
-                <li class="item-bottom-share">
-                  <img src="../../../assets/images/share.svg" alt=""> 分享</li>
-              </ul>
-            </div>
-          </li>
-          <li class="post-item">
-            <div class="item-top">
-              <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
-              <div class="item-top-middle">
-                <span>淘票票</span>
-                <div class="item-time-user">
-                  <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
-                </div>
-              </div>
-              <span class="title-icon"> > </span>
-            </div>
-            <div class="item-content">
-              <h4>《丑娃娃国庆欢乐上线》</h4>
-              <div class="item-content-video">
-                该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
-              </div>
-            </div>
-            <div class="item-bottom">
-              <ul class="item-bottom-list">
-                <li class="item-bottom-like">
-                  <img src="../../../assets/images/like.svg" alt="">   2
-                </li>
-                <li class="item-bottom-unlike">
-                  <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
-                <li class="item-bottom-comment">
-                  <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
-                <li class="item-bottom-share">
-                  <img src="../../../assets/images/share.svg" alt=""> 分享</li>
-              </ul>
-            </div>
-          </li>
+    <div class="search-has-input" v-if="hasInput">
+      <ul class="search-has-input-group">
+        <li class="search-has-input-item">我服了</li>
+        <li class="search-has-input-item">我服了他</li>
+        <li class="search-has-input-item">我服了。</li>
+      </ul>
+    </div>
+    <div class="search-no-input" v-else>
+      <div class="hot-search">
+        <p>大家都在搜</p>
+        <div class="hot-list">
+          <ul class="record-group">
+            <li class="record-item">1 皮小妹专访骚男</li>
+            <li class="record-item">2 皮皮虾官方小酒</li>
+            <li class="record-item">3 皮皮虾创造周</li>
+            <li class="record-item">4 让人</li>
+            <li class="record-item">5 头像</li>
+            <li class="record-item">6 表情包</li>
+          </ul>
+        </div>
+      </div>
+      <div class="search-record">
+        <p class="record-title">搜索记录</p>
+        <span class="delete-record">
+          <img src="../../../assets/images/delete.svg" alt="">
+        </span>
+      </div>
+      <div class="search-record-list">
+        <ul class="search-record-group">
+          <li class="search-record-item">呵呵</li>
+          <li class="search-record-item">皮小子</li>
+          <li class="search-record-item">皮皮虾</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
+          <li class="search-record-item">我不皮</li>
         </ul>
-      </section>
+      </div>
+    </div>
+    <section class="post-list" style="display: none">
+      <ul class="post-wrapper">
+        <li class="post-item">
+          <div class="item-top">
+            <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
+            <div class="item-top-middle">
+              <span>淘票票</span>
+              <div class="item-time-user">
+                <span class="time">2小时前</span>
+                <span class="user">上海影视文化有限公司</span>
+              </div>
+            </div>
+            <span class="title-icon"> > </span>
+          </div>
+          <div class="item-content">
+            <h4>《丑娃娃国庆欢乐上线》</h4>
+            <div class="item-content-video">
+              该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+            </div>
+          </div>
+          <div class="item-bottom">
+            <ul class="item-bottom-list">
+              <li class="item-bottom-like">
+                <img src="../../../assets/images/like.svg" alt="">   2
+              </li>
+              <li class="item-bottom-unlike">
+                <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
+              <li class="item-bottom-comment">
+                <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
+              <li class="item-bottom-share">
+                <img src="../../../assets/images/share.svg" alt=""> 分享</li>
+            </ul>
+          </div>
+        </li>
+        <li class="post-item">
+          <div class="item-top">
+            <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
+            <div class="item-top-middle">
+              <span>淘票票</span>
+              <div class="item-time-user">
+                <span class="time">2小时前</span>
+                <span class="user">上海影视文化有限公司</span>
+              </div>
+            </div>
+            <span class="title-icon"> > </span>
+          </div>
+          <div class="item-content">
+            <h4>《丑娃娃国庆欢乐上线》</h4>
+            <div class="item-content-video">
+              该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+            </div>
+          </div>
+          <div class="item-bottom">
+            <ul class="item-bottom-list">
+              <li class="item-bottom-like">
+                <img src="../../../assets/images/like.svg" alt="">   2
+              </li>
+              <li class="item-bottom-unlike">
+                <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
+              <li class="item-bottom-comment">
+                <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
+              <li class="item-bottom-share">
+                <img src="../../../assets/images/share.svg" alt=""> 分享</li>
+            </ul>
+          </div>
+        </li>
+        <li class="post-item">
+          <div class="item-top">
+            <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
+            <div class="item-top-middle">
+              <span>淘票票</span>
+              <div class="item-time-user">
+                <span class="time">2小时前</span>
+                <span class="user">上海影视文化有限公司</span>
+              </div>
+            </div>
+            <span class="title-icon"> > </span>
+          </div>
+          <div class="item-content">
+            <h4>《丑娃娃国庆欢乐上线》</h4>
+            <div class="item-content-video">
+              该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+            </div>
+          </div>
+          <div class="item-bottom">
+            <ul class="item-bottom-list">
+              <li class="item-bottom-like">
+                <img src="../../../assets/images/like.svg" alt="">   2
+              </li>
+              <li class="item-bottom-unlike">
+                <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
+              <li class="item-bottom-comment">
+                <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
+              <li class="item-bottom-share">
+                <img src="../../../assets/images/share.svg" alt=""> 分享</li>
+            </ul>
+          </div>
+        </li>
+        <li class="post-item">
+          <div class="item-top">
+            <a href=""><img src="../../../assets/images/avator.svg" alt=""></a>
+            <div class="item-top-middle">
+              <span>淘票票</span>
+              <div class="item-time-user">
+                <span class="time">2小时前</span>
+                <span class="user">上海影视文化有限公司</span>
+              </div>
+            </div>
+            <span class="title-icon"> > </span>
+          </div>
+          <div class="item-content">
+            <h4>《丑娃娃国庆欢乐上线》</h4>
+            <div class="item-content-video">
+              该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+            </div>
+          </div>
+          <div class="item-bottom">
+            <ul class="item-bottom-list">
+              <li class="item-bottom-like">
+                <img src="../../../assets/images/like.svg" alt="">   2
+              </li>
+              <li class="item-bottom-unlike">
+                <img src="../../../assets/images/unlike.svg" alt=""> 踩</li>
+              <li class="item-bottom-comment">
+                <img src="../../../assets/images/commen.svg" alt=""> 评论</li>
+              <li class="item-bottom-share">
+                <img src="../../../assets/images/share.svg" alt=""> 分享</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </section>
   </section>
 </template>
 
@@ -192,7 +192,7 @@
   export default {
     data () {
       return {
-        hasInput: true,
+        hasInput: false,
         result: true
       }
     },

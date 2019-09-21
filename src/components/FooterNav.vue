@@ -113,7 +113,6 @@ export default {
     text-align: center;
     display: inline-block;
     font-size: 12px;
-
   }
 
   .nav-home::after {

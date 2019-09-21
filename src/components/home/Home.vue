@@ -247,7 +247,7 @@
         </ul>
     </section>
     <div class="bottom">
-      哥,这回这没了~
+      @~@ 哥,这回这没了~
     </div>
   </div>
 </template>
@@ -351,7 +351,6 @@
     width: 100%;
     position: relative;
     overflow: hidden;
-    padding-top: 10px;
   }
 
   .post-item .item-top a{
@@ -369,6 +368,7 @@
     font-size: 12px;
     height: 25px;
     margin-left: 10px;
+    margin-top: 4px;
   }
 
   .post-item .item-top-middle .item-time-user {
@@ -392,6 +392,9 @@
     width: 100%;
     height: 30px;
     overflow: hidden;
+    padding-top: 4px;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   .post-item .item-content .item-content-video {
@@ -400,6 +403,7 @@
     overflow: hidden;
     font-size: 14px;
     color: #333333;
+    padding-left: 6px;
   }
 
   .post-item .item-bottom {
@@ -446,5 +450,7 @@
   .bottom {
     height: 100px;
     width: 100%;
+    padding-left: 20px;
+    padding-top: 10px;
   }
 </style>

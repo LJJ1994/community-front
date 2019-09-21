@@ -242,7 +242,7 @@ export default {
   overflow: hidden;
   margin-top: 17px;
   padding-bottom: 7px;
-  border-bottom: 1px solid #d9d9d9;
+  border-bottom: 1px solid #fdf6f6;
 }
 .follow-item-avator {
   float: left;
@@ -259,6 +259,7 @@ export default {
 .find-follow-item img {
   width: 40px;
   height: 40px;
+  padding-bottom: 2px;
 }
 .find-follow-item p {
   font-size: 14px;
@@ -277,7 +278,7 @@ export default {
     width: 100%;
     position: relative;
     overflow: hidden;
-    border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid #fdf6f6;
   }
   .suggest-avator-text {
     float: left;
