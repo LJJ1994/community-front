@@ -1,11 +1,12 @@
 <template>
-    <div class="at">
+    <div class="all">
+      我是all
     </div>
 </template>
 
 <script>
   export default {
-    name: 'At'
+    name: 'all'
   }
 </script>
 

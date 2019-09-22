@@ -1,6 +1,5 @@
 <template>
     <div class="all">
-      我是全部消息
     </div>
 </template>
 

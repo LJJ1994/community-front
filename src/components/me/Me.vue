@@ -1,53 +1,30 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
     <div class="me">
-<!--      <div class="me-wrapper">-->
-<!--        <div class="me-top">-->
-<!--          <span class="me-avator"><img src="../../assets/images/avator.svg" alt=""></span>-->
-<!--          <div class="me-profile">-->
-<!--            <h3 class="me-name">我不是皮皮虾233</h3>-->
-<!--            <p class="me-introduce">测试</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="me-middle">-->
-<!--          <ul class="me-middle-group">-->
-<!--            <li class="me-item-like">获赞</li>-->
-<!--            <li class="me-item-fans">粉丝</li>-->
-<!--            <li class="me-item-follow">关注</li>-->
-<!--            <li class="me-item-score">积分</li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--        <div class="me-bottom">-->
-<!--          <ul class="me-bottom-group">-->
-<!--            <li class="me-item-post">帖子</li>-->
-<!--            <li class="me-item-common">评论</li>-->
-<!--            <li class="me-item-collection">收藏</li>-->
-<!--            <li class="me-item-history">观看历史</li>-->
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </div>-->
-      <div class="me-top">
-        <el-row :gutter="20">
-          <el-col :span="6" class="me-top-item">
-            <div class="me-avator">
-              <img src="../../assets/images/avator.svg" alt="">
-            </div>
-          </el-col>
-          <el-col :span="14" class="me-top-item">
-            <div class="me-profile">
-              <div v-if="hasLogin" class="me-has-login">
-                <h3 class="me-name">我是皮皮虾233</h3>
-                <p class="me-introduce">测试</p>
+      <router-link to="/me/detail" @click.native="HideFooter">
+        <div class="me-top">
+          <el-row :gutter="20">
+            <el-col :span="6" class="me-top-item">
+              <div class="me-avator">
+                <img src="../../assets/images/avator.svg" alt="">
               </div>
-              <div class="me-need-login" v-else>
-                <span>登录/注册</span>
+            </el-col>
+            <el-col :span="14" class="me-top-item">
+              <div class="me-profile">
+                <div v-if="hasLogin" class="me-has-login">
+                  <h3 class="me-name">我是皮皮虾233</h3>
+                  <p class="me-introduce">测试</p>
+                </div>
+                <div class="me-need-login" v-else>
+                  <span>登录/注册</span>
+                </div>
               </div>
-            </div>
-          </el-col>
-          <el-col :span="4" class="me-top-item">
-            <p class="me-icon"> > </p>
-          </el-col>
-        </el-row>
-      </div>
+            </el-col>
+            <el-col :span="4" class="me-top-item">
+              <p class="me-icon"> > </p>
+            </el-col>
+          </el-row>
+        </div>
+      </router-link>
       <div class="me-middle">
         <el-row :gutter="20" class="me-middle-group">
           <el-col :span="6" class="me-middle-like me-middle-item">
@@ -144,15 +121,24 @@
 </template>
 
 <script>
+  import MeDetail from './components/meDetail'
 export default {
   name: 'Me',
+  components : {
+    MeDetail,
+  },
   data () {
     return {
       like: 0,
       fans: 0,
       follow: 3,
       score: 100,
-      hasLogin: false
+      hasLogin: true
+    }
+  },
+  methods: {
+    HideFooter () {
+      this.$store.state.footer.isShow = false
     }
   }
 }
@@ -181,6 +167,7 @@ export default {
   .me-name {
     font-size: 16px;
     font-weight: bold;
+    color: #000;
   }
   .me-need-login {
     text-align: center;

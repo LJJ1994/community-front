@@ -174,7 +174,6 @@
 <style scoped>
 .like {
   height: 100%;
-  margin-top: 50px;
 }
   .like-wrapper {
     height: 100%;
@@ -186,8 +185,8 @@
     margin-bottom: 10px;
   }
   .like-item img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding-top: 10px;
     padding-left: 10px;
   }

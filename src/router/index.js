@@ -5,6 +5,8 @@ import Home from '@/components/home/Home'
 import Publish from '@/components/publish/Publish'
 import Message from '@/components/message/Message'
 import Me from '@/components/me/Me'
+import MeDetail from '@/components/me/components/meDetail'
+import MeEdit from '@/components/me/components/edit'
 import Find from '@/components/find/Find'
 
 import Search from '@/components/home/components/search'
@@ -42,6 +44,16 @@ export default new Router({
       path: '/me',
       name: 'Me',
       component: Me
+    },
+    {
+      path: '/me/detail',
+      name: 'MeDetail',
+      component: MeDetail
+    },
+    {
+      path: '/me/edit',
+      name: 'MeEdit',
+      component: MeEdit
     }
   ]
 })

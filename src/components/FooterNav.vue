@@ -1,11 +1,11 @@
 <template>
-  <footer class="footer" :class="{'go-back': !showNav}">
+  <footer class="footer" :class="{'go-back': !showNav}" v-show="$store.state.footer.isShow">
     <section class="footer mint-1px-t" v-show="showNav">
       <nav class="nav nav-home" :class="{'cur-page': route === '/'}">
         <router-link to="/">
           <div class="nav-icon">
-            <img v-show="route !== '/'" src="../assets/images/home.svg" alt="">
-            <img v-show="route === '/'" src="../assets/images/home.svg" alt="">
+            <img v-show="route !== '/'" src="../assets/images/home1.svg" alt="">
+            <img v-show="route === '/'" src="../assets/images/home1.svg" alt="">
           </div>
         </router-link>
       </nav>
@@ -50,6 +50,11 @@
 <script>
 export default {
   name: 'FooterNav',
+  data () {
+    return {
+      // showFooter: this.$store.state.footer.isShow
+    }
+  },
   props: {
     'showNav': {
       type: Boolean,

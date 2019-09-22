@@ -42,10 +42,6 @@
 </script>
 
 <style scoped>
-.comments {
-  height: 100%;
-  margin-top: 50px;
-}
   .comments-wrapper {
     max-height: 60px;
     width: 100%;
@@ -54,7 +50,6 @@
   .comments-wrapper img {
     width: 40px;
     height: 40px;
-    margin-left: 10px;
   }
   .comments-user-name {
     font-size: 12px;
@@ -69,7 +64,7 @@
   }
   .comments-time {
     margin-top: 4px;
-    font-size: 6px;
+    font-size: 10px;
   }
   .like-item-right {
     width: 60px;

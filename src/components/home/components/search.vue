@@ -1,9 +1,7 @@
 <template>
   <section class="search">
     <div class="search-head">
-      <router-link to="/">
-        <span class="search-back"> < </span>
-      </router-link>
+        <span class="search-back" @click="goBack"> < </span>
       <form action="" class="form-group">
         <input type="text" placeholder="请输入关键字" class="search-input">
         <input type="submit" value="搜索" class="search-btn">
@@ -196,7 +194,19 @@
         result: true
       }
     },
-    name: 'search'
+    name: 'search',
+    methods: {
+      HideFooter () {
+        this.$store.state.footer.isShow = false
+      },
+      goBack () {
+        this.$router.back()
+        this.$store.state.footer.isShow = true
+      }
+    },
+    created () {
+      this.HideFooter()
+    }
   }
 </script>
 

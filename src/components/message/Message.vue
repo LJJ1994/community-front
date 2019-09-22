@@ -19,20 +19,23 @@
     </div>
     <div class="message-list">
       <ul class="message-group">
-        <li class="message-item-like" v-show="m['all']">
+        <li class="message-item message-item-like" v-show="m['all']">
           <all></all>
         </li>
-        <li class="message-item-at" v-show="m['at']">
+        <li class="message-item message-item-at" v-show="m['at']">
           <at></at>
         </li>
-        <li class="message-item-common" v-show="m['common']">
+        <li class="message-item message-item-common" v-show="m['common']">
           <common></common>
         </li>
-        <li class="message-item-follow" v-show="m['follow']">
+        <li class="message-item message-item-follow" v-show="m['follow']">
           <follow></follow>
         </li>
-        <li class="message-item-like" v-show="m['like']">
+        <li class="message-item message-item-like" v-show="m['like']">
           <like></like>
+        </li>
+        <li class="message-item-bottom">
+          T-T 哥, 这回真没了~
         </li>
       </ul>
     </div>
@@ -49,10 +52,10 @@ import At from './components/At'
   export default {
     data () {
       return {
-        menu_text: '全部消息',
+        menu_text: '评论和回复',
         m: {
-          'all': true,
-          'common': false,
+          'all': false,
+          'common': true,
           'like': false,
           'at': false,
           'follow': false
@@ -77,7 +80,8 @@ import At from './components/At'
         var self = this
         switch (name) {
           case "all":
-            self.changePage(name)
+            // self.changePage(name)
+            self.showAll();
             self.menu_text = '全部消息';
             break;
           case "common":
@@ -102,12 +106,18 @@ import At from './components/At'
       },
       changePage (cur_name) {
         const self = this
-        const len = Object.getOwnPropertyNames(self.m).length
+        // const len = Object.getOwnPropertyNames(self.m).length 获取对象键值对数量的方法
         for (var x in self.m) {
           self.m[x] = false
         }
         if (cur_name in self.m) {
           self.m[cur_name] = true
+        }
+      },
+      showAll() {
+        const self = this
+        for (var obj in self.m) {
+          self.m[obj] = true
         }
       }
     },
@@ -142,5 +152,22 @@ import At from './components/At'
   }
   .ivu-dropdown-rel a {
     color: #333333;
+  }
+  .message-list {
+    height: 100%;
+    margin-top: 48px;
+  }
+  .message-item {
+    margin-bottom: 10px;
+  }
+  .message-item-bottom {
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 14px;
+    color: #878787;
+    border-bottom: 1px solid #f7ebeb;
+    padding-bottom: 5px;
+    margin-right: 30px;
+    margin-bottom: 70px;
   }
 </style>
