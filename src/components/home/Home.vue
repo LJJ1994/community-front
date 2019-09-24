@@ -26,17 +26,19 @@
                 <span>淘票票</span>
                 <div class="item-time-user">
                   <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
+                  <span class="user" v-show="isOrganization">上海影视文化有限公司</span>
                 </div>
               </div>
               <span class="title-icon"> > </span>
             </div>
-            <div class="item-content">
-              <h4>《丑娃娃国庆欢乐上线》</h4>
-              <div class="item-content-video">
-                该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+            <router-link :to="{name: 'PostDetail', params: {'postId': id}}">
+              <div class="item-content">
+                <h4 >《丑娃娃国庆欢乐上线》</h4>
+                <div class="item-content-video">
+                  该片讲述了丑娃娃们探索未知世界寻找真正自我的冒险之旅的故事。生活在丑娃镇上的丑娃娃们前往一个叫完美学院的地方探险，那里的娃娃们都精致漂亮，会在毕业前接受训练，然后被送到真实世界里成为孩子们心爱的玩具。小希要和小伙伴们在那里接受训练变身完美娃娃，这对于他们来说并不容易。小希能否完成蜕变，找到属于自己的主人，故事还在继续展开。
+                </div>
               </div>
-            </div>
+            </router-link>
             <div class="item-bottom">
               <ul class="item-bottom-list">
                 <li class="item-bottom-like">
@@ -58,7 +60,7 @@
                 <span>淘票票</span>
                 <div class="item-time-user">
                   <span class="time">2小时前</span>
-                  <span class="user">上海影视文化有限公司</span>
+                  <span class="user" v-show="!isOrganization">上海影视文化有限公司</span>
                 </div>
               </div>
               <span class="title-icon"> > </span>
@@ -259,7 +261,9 @@
   export default {
     data () {
       return {
-        select: true
+        select: true,
+        id: 1,
+        isOrganization: true
       }
     },
     name: 'Home',
@@ -393,6 +397,7 @@
     height: 30px;
     overflow: hidden;
     padding-top: 4px;
+    color: #333333;
     font-size: 14px;
     font-weight: bold;
   }

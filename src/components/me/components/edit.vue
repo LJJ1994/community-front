@@ -54,6 +54,8 @@
       },
       goBack () {
         this.$router.back()
+        this.$store.state.footer.isShow = true
+
       }
     },
     mounted () {

@@ -1,30 +1,36 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="me">
-      <router-link to="/me/detail" @click.native="HideFooter">
-        <div class="me-top">
-          <el-row :gutter="20">
-            <el-col :span="6" class="me-top-item">
-              <div class="me-avator">
-                <img src="../../assets/images/avator.svg" alt="">
+      <div class="me-top">
+        <el-row :gutter="20">
+          <el-col :span="6" class="me-top-item">
+            <div class="me-avator">
+              <img src="../../assets/images/avator.svg" alt="">
+            </div>
+          </el-col>
+          <el-col :span="14" class="me-top-item">
+            <div class="me-profile">
+              <div class="me-profile-wrapper" v-if="hasLogin">
+                <router-link to="/me/detail" @click.native="HideFooter">
+                  <div class="me-has-login">
+                    <h3 class="me-name">我是皮皮虾233</h3>
+                    <p class="me-introduce">测试</p>
+                  </div>
+                </router-link>
               </div>
-            </el-col>
-            <el-col :span="14" class="me-top-item">
-              <div class="me-profile">
-                <div v-if="hasLogin" class="me-has-login">
-                  <h3 class="me-name">我是皮皮虾233</h3>
-                  <p class="me-introduce">测试</p>
-                </div>
-                <div class="me-need-login" v-else>
-                  <span>登录/注册</span>
-                </div>
+              <div class="me-profile-wrapper" v-else>
+                <router-link to="/me/login" @click.native="HideFooter">
+                  <div class="me-need-login">
+                    <span>登录/注册</span>
+                  </div>
+                </router-link>
               </div>
-            </el-col>
-            <el-col :span="4" class="me-top-item">
-              <p class="me-icon"> > </p>
-            </el-col>
-          </el-row>
-        </div>
-      </router-link>
+            </div>
+          </el-col>
+          <el-col :span="4" class="me-top-item">
+            <p class="me-icon"> > </p>
+          </el-col>
+        </el-row>
+      </div>
       <div class="me-middle">
         <el-row :gutter="20" class="me-middle-group">
           <el-col :span="6" class="me-middle-like me-middle-item">
@@ -43,14 +49,14 @@
       </div>
       <div class="me-bottom">
         <nav class="nav nav-post">
-          <router-link to="/me/post">
+          <router-link :to="{ name: 'Detail', params: {currentTab: 'post'} }">
             <div class="nav-icon">
               <img src="../../assets/images/post.svg" alt="">
             </div>
           </router-link>
         </nav>
         <nav class="nav nav-common">
-          <router-link to="/me/common">
+          <router-link  :to="{ name: 'Detail', params: {currentTab: 'comments'} }">
             <div class="nav-icon">
               <img src="../../assets/images/me-common.svg" alt="">
             </div>
@@ -133,7 +139,7 @@ export default {
       fans: 0,
       follow: 3,
       score: 100,
-      hasLogin: true
+      hasLogin: false
     }
   },
   methods: {
@@ -173,6 +179,7 @@ export default {
     text-align: center;
     margin-top: 20px;
     font-size: 16px;
+    color: #333333;
   }
   .me-introduce {
     font-size: 14px;

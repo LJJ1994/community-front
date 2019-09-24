@@ -26,7 +26,7 @@
     name: 'meDetail',
     data () {
       return {
-        currentTab: 'post'
+        currentTab: this.$route.params.currentTab || 'all'
       }
     },
     components: {
@@ -38,7 +38,13 @@
     methods: {
       toggleTab (tab) {
         this.currentTab = tab
+      },
+      HideFooter () {
+        this.$store.state.footer.isShow = false
       }
+    },
+    mounted () {
+      this.HideFooter()
     }
   }
 </script>
