@@ -14,23 +14,35 @@
         </Row>
       </div>
       <div class="edit-avatar">
-        <img src="../../../assets/images/gilr1.svg" alt="">
+        <span><img :src="avatar_url" alt=""></span>
+        <div class="avatar-upload">
+          <Upload
+                  :action="uploadUrl"
+                  :headers="headers"
+                  :name="name"
+                  :on-success="onSuccess"
+                  :show-upload-list="showUploadList"
+                  :on-error="onError"
+          >
+            <Button icon="ios-cloud-upload-outline">更换头像</Button>
+          </Upload>
+        </div>
       </div>
       <div class="me-edit-wrapper">
-        <form action="">
+        <form action="" @submit.prevent="editSubmit">
           <label for="nick-name">昵称: </label><br>
-          <input type="text" id="nick-name" name="name" class="nick-name" v-model="nickName"><br><br>
+          <input type="text" id="nick-name" class="nick-name" v-model="username"><br><br>
           <label for="signature">签名: </label><br>
-          <input type="text" id="signature" name="signature" class="edit-signature" v-model="signature"><br>
+          <input type="text" id="signature" class="edit-signature" v-model="signature"><br>
           <span class="edit-sex">性别: </span><br>
 
-          <input type="radio" id="one" value="1" v-model="picked" class="sex-man">
-          <label for="one">女</label>
+          <input type="radio" id="one" value="1" v-model="sex" class="sex-man">
+          <label for="one">男</label>
 
-          <input type="radio" id="two" value="2" v-model="picked" class="sex-woman">
-          <label for="two">男</label>
+          <input type="radio" id="two" value="2" v-model="sex" class="sex-woman">
+          <label for="two">女</label>
 
-          <input type="radio" id="three" value="3" v-model="picked" class="sex-alians">
+          <input type="radio" id="three" value="3" v-model="sex" class="sex-alians">
           <label for="three">外星人</label><br>
           <input type="submit" value="完成" class="sub-btn">
         </form>
@@ -39,13 +51,25 @@
 </template>
 
 <script>
+  import {GetUser, UserEdit} from 'api/api'
+  import {ChangeSex} from 'utils/changeSex'
+
   export default {
     name: 'edit',
     data () {
+      const token = window.localStorage.getItem('token')
       return {
-        picked: '',
-        nickName: '我是一只猪',
-        signature: '我才不是猪呢,　嘤嘤嘤',
+        sex: 0,
+        username: '',
+        signature: '',
+        avatar_url: '',
+
+        name: 'avatar',
+        showUploadList: false,
+        uploadUrl: 'http://127.0.0.1:5000/api/users/avatar',  //后端上传头像api接口
+        headers: {
+          'Authorization': `Bearer  ${token}`  // 后端api需要登录用户的token
+        }
       }
     },
     methods: {
@@ -55,11 +79,49 @@
       goBack () {
         this.$router.back()
         this.$store.state.footer.isShow = true
-
+      },
+      // 头像上传成功时处理函数
+      // iview文件上传成功时, 接受从后端发送过来的data
+      onSuccess (response, file, fileList) {
+        this.$Message.success('上传成功')
+        this.avatar_url = response.data.avatar_url
+      },
+      onError (error, file, fileList) {
+        this.$Message.error('上传失败!')
+      },
+       editSubmit () {
+        let data = JSON.stringify({
+          'username': this.username,
+          'signature': this.signature,
+          'value': this.sex
+        })
+        const user_id = this.$store.state.user.user_id
+        UserEdit(user_id, data).then(res => {
+          if (res.data.errno == "0") {
+            this.$Message.success("编辑成功!")
+          } else {
+            this.$Message.success("编辑失败!")
+          }
+        })
       }
     },
     mounted () {
       this.HideFooter()
+    },
+    created () {
+      const self = this
+      const user_id = self.$store.state.user.user_id
+      GetUser(user_id).then(res=>{
+        if (res.data.errno == '0') {
+          const data = res.data.data
+          self.username = data.username
+          self.signature = data.signature
+          self.sex = ChangeSex(data.gender)
+          self.avatar_url = data.avatar_url
+        } else {
+          console.log(res.data.errmsg)
+        }
+      })
     }
   }
 </script>
@@ -100,11 +162,27 @@
     font-size: 15px;
   }
   .edit-avatar {
-   height: 90px;
+   height: 100%;
+  }
+  .avatar-upload {
+    margin-left: 116px;
+    margin-top: 16px;
+    width: 50px;
+    height: 50px;
+  }
+  .edit-avatar span {
+    margin-left: 127px;
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+  }
+  .edit-avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
   }
   .me-edit-wrapper {
     height: 400px;
-    margin-top: 20px;
     margin-left: 15px;
   }
   .nick-name {

@@ -1,7 +1,12 @@
 <template>
   <div id="app" :style="{height: '100%'}">
     <div class="main" :style="{height: '100%'}">
-      <router-view></router-view>
+<!--      <transition name="fade" enter-active-class="animated slideInDown"-->
+<!--                  leave-active-class="animated slideInUp"-->
+<!--                  :duration="100">-->
+<!--        <router-view></router-view>-->
+<!--      </transition>-->
+        <router-view></router-view>
     </div>
     <footer-nav></footer-nav>
   </div>
@@ -13,19 +18,24 @@ export default {
   name: 'App',
   data () {
     return {
-      showNav: true
+      route: this.$route.path === '/publish'
     }
   },
   components: {
     FooterNav
   },
+  watch: {
+    '$route': function () {
+      this.routeChange()
+    }
+  },
   methods: {
     routeChange () {
       let path = this.$route.path
-      if (path === '/' || path === '/find' || path === '/publish' || path === '/message' || path === '/me') {
-        this.showNav = true
+      if (path === '/' || path === '/me' || path === '/find' || path === '/message') {
+        this.$store.state.footer.isShow = true
       } else {
-        this.showNav = false
+        this.$store.state.footer.isShow = false
       }
     }
   },

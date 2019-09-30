@@ -1,6 +1,6 @@
 <template>
   <div class="me-detail">
-    <me-common></me-common>
+    <me-common :profile="profile"></me-common>
     <div class="me-detail-tab">
       <ul class="tab-group">
         <li class="tab-all tab-item" @click="toggleTab('all')" :class="{active: currentTab === 'all'}">全部</li>
@@ -10,7 +10,7 @@
     </div>
     <div class="me-tab-content">
       <keep-alive>
-        <component :is="currentTab"></component>
+        <component :is="currentTab" :posts="posts"></component>
       </keep-alive>
     </div>
   </div>
@@ -22,11 +22,15 @@
   import All from './all'
   import Comments from './comments'
 
+  import { GetUser } from 'api/api'
+
   export default {
     name: 'meDetail',
     data () {
       return {
-        currentTab: this.$route.params.currentTab || 'all'
+        posts: [],
+        currentTab: this.$route.params.currentTab || 'post',
+        profile: {}
       }
     },
     components: {
@@ -45,6 +49,24 @@
     },
     mounted () {
       this.HideFooter()
+    },
+    created () {
+      const self = this
+      GetUser(this.$store.state.user.user_id).then(res => {
+        if (res.data.errno == "0") {
+          const data = res.data.data
+          self.profile['like'] = data.like
+          self.profile['fans'] = data.followers_count
+          self.profile['follow'] = data.followed_count
+          self.profile['score'] = data.score
+          self.profile['username'] = data.username
+
+          self.posts=data.post_list
+          console.log(self.posts)
+        } else {
+          alert(res.data.errmsg)
+        }
+      })
     }
   }
 </script>
@@ -55,7 +77,7 @@
 }
 .me-detail-tab{
   position: sticky;
-  z-index: 999;
+  z-index: 99;
   background: #ffffff;
   top: 38px;
 }

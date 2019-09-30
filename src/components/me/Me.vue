@@ -4,7 +4,7 @@
         <el-row :gutter="20">
           <el-col :span="6" class="me-top-item">
             <div class="me-avator">
-              <img src="../../assets/images/avator.svg" alt="">
+              <img :src="avatar_url" alt="">
             </div>
           </el-col>
           <el-col :span="14" class="me-top-item">
@@ -12,8 +12,8 @@
               <div class="me-profile-wrapper" v-if="hasLogin">
                 <router-link to="/me/detail" @click.native="HideFooter">
                   <div class="me-has-login">
-                    <h3 class="me-name">我是皮皮虾233</h3>
-                    <p class="me-introduce">测试</p>
+                    <h3 class="me-name">{{ username }}</h3>
+                    <p class="me-introduce">{{ signature }}</p>
                   </div>
                 </router-link>
               </div>
@@ -128,6 +128,7 @@
 
 <script>
   import MeDetail from './components/meDetail'
+  import { GetUser } from 'api/api'
 export default {
   name: 'Me',
   components : {
@@ -139,12 +140,39 @@ export default {
       fans: 0,
       follow: 3,
       score: 100,
-      hasLogin: false
+      username: '',
+      signature: '',
+      avatar_url: ''
+    }
+  },
+  computed: {
+    hasLogin () {
+      return this.$store.state.user.is_authenticated
     }
   },
   methods: {
     HideFooter () {
       this.$store.state.footer.isShow = false
+    }
+  },
+  created () {
+    // 进入该路由的时候获取用户信息，这个过程向后端查询比较快，所以在路由导航完成时获取数据即可.
+    const user_id = this.$store.state.user.user_id
+    const self = this
+    if (user_id) {
+      GetUser(user_id).then(res => {
+        if (res.status === 200) {
+          const data = res.data.data
+
+          self.like = data.like ? data.like : 0
+          self.fans = data.followers_count
+          self.follow = data.followed_count
+          self.score = data.score
+          self.username = data.username
+          self.signature = data.signature ? data.signature : "测试"
+          self.avatar_url = data.avatar_url
+        }
+      })
     }
   }
 }
@@ -166,6 +194,7 @@ export default {
     width: 50px;
     height: 50px;
     margin: 5px 15px;
+    border-radius: 26px;
   }
   .me-profile {
     margin-top: 5px;
@@ -184,6 +213,7 @@ export default {
   .me-introduce {
     font-size: 14px;
     color: #9c9c9c;
+    margin-top: 5px;
   }
   .me-icon {
     margin-top: 13px;

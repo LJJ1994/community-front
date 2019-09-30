@@ -8,15 +8,12 @@
         <form>
           <input type="text" id="phone" v-model="mobile" class="mobile" placeholder="请输入手机号">
           <input type="submit" v-model="getSms" class="get-sms" @click.prevent="GetSmsCode" :disabled="isEnabledBtn">
-          <p class="err-msg">{{ errMsg }}</p>
         </form>
       </div>
       <div class="register-form">
         <form action="">
           <label for="sms">验证码:</label><br>
           <input type="text" v-model="smsCode" id="sms" class="sms-code"><br>
-<!--          <label for="user">用户名</label><br>-->
-<!--          <input type="text" id="user" v-model="username" class="username"><br>-->
           <label for="pass1">密码:</label><br>
           <input type="password" id="pass1" v-model="password" class="password1"><br>
           <label for="pass2">重复密码: </label><br>
@@ -36,7 +33,6 @@
         isEnabledBtn: false,
         getSms: '发送验证码',
         mobile: '',
-        errMsg: '',
         smsCode: null,
         username: '',
         password: '',
@@ -53,7 +49,7 @@
       CheckPhone (val) {
         let mobile = this.mobile.toString()
         if (!/^1[3456789]\d{9}$/.test(mobile)) {
-          this.errMsg = '* 请输入格式正确的手机号'
+          this.$Message.warn('请输入格式正确的手机号')
         }
       },
       GetSmsCode (e) {
@@ -66,6 +62,7 @@
           url: "/api/sms_codes/" + mobileVal
         }).then(function (res) {
           if (res.data.errno == "0") {
+            self.$Message.success('验证码发送成功')
             var num = 60
             var timer = setInterval(function () {
               if (num >= 1) {
@@ -79,7 +76,8 @@
               }
             }, 1000, 60)
           } else {
-            alert(res.data.errmsg)
+            // alert(res.data.errmsg)
+            self.$Message.error('验证码发送失败')
           }
         })
       },
@@ -96,10 +94,17 @@
           data: data,
           url: '/api/users/signup',
           headers: {
+            ContentType: 'application/json',
             "X-CSRFToken": GetCookie("csrf_token")
           }
         }).then(function (res) {
-          console.log(res.data)
+          if (res.data.errno == "0") {
+            self.$Message.success('注册成功')
+            self.$store.state.footer.isShow = false
+            self.$router.push({path: '/me/login'})
+          } else {
+            self.$Message.error('出现了一些问题~')
+          }
         }).catch(function (res) {
           alert(res)
         })

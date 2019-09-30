@@ -6,10 +6,10 @@
             <img src="../../assets/images/kuohao.svg" alt="" @click="goBack">
           </Col>
           <Col span="20">
-            <p class="me-common-name" v-show="showName">{{ userName }}</p>
+            <p class="me-common-name" v-show="showName">{{ username }}</p>
             <div class="avator-name" v-show="!showName">
-              <img src="../../assets/images/avator.svg" alt="">
-              <p class="me-common-name1">{{ userName }}</p>
+              <img :src="avatar_url" alt="">
+              <p class="me-common-name1">{{ username }}</p>
             </div>
           </Col>
         </Row>
@@ -17,7 +17,7 @@
       <div class="me-common-profile">
         <Row>
           <Col span="6">
-            <img src="../../assets/images/avator.svg" alt="">
+            <img :src="avatar_url" alt="">
           </Col>
           <Col span="18" class="me-profile-col">
             <div class="me-profile-group">
@@ -40,11 +40,11 @@
                 </li>
               </ul>
             </div>
-            <router-link to="/me/edit">
+              <router-link to="/me/edit">
               <span class="me-profile-edit" id="me-profile">
                 编辑资料
               </span>
-            </router-link>
+              </router-link>
           </Col>
         </Row>
         <div class="me-profile-introduce">
@@ -56,17 +56,20 @@
 </template>
 
 <script>
+  import {GetUser} from 'api/api'
+
   export default {
     data () {
       return {
         showName: true,
-        userName: '我不是屁屁虾233',
+        username: '',
         like: 0,
         fans: 0,
         follow: 2,
         score: 1000,
         position: '广州',
-        introduce: '测试'
+        introduce: '测试',
+        avatar_url: ''
       }
     },
     methods: {
@@ -84,6 +87,24 @@
       }
     },
     created () {
+      const user_id = this.$store.state.user.user_id
+      const self = this
+      if (user_id) {
+        GetUser(user_id).then(res => {
+          if (res.status === 200) {
+            const data = res.data.data
+
+            self.like = data.like ? data.like : 0
+            self.fans = data.followers_count
+            self.follow = data.followed_count
+            self.score = data.score
+            self.username = data.username
+            self.introduce = data.signature
+            self.avatar_url = data.avatar_url
+          }
+        })
+      }
+
       window.addEventListener('scroll', this.handleScroll)
     },
     name: 'meCommon'
@@ -95,7 +116,7 @@
   height: 140px;
 }
   .me-common-header{
-    z-index: 999;
+    z-index: 98;
     background: #ffffff;
     position: fixed;
     top: 0;
@@ -113,8 +134,8 @@
   .me-common-name {
     font-size: 14px;
     font-weight: bold;
-    margin-top: 7px;
-    margin-left: 40px;
+    margin-top: 11px;
+    margin-left: 58px;
   }
   .avator-name {
     margin-top: 4px;
@@ -123,6 +144,7 @@
     overflow: hidden;
   }
   .avator-name img {
+    border-radius: 13px;
     float: left;
     width: 25px;
     height: 25px;
@@ -131,16 +153,17 @@
     float: left;
     font-size: 10px;
     font-weight: bold;
-    margin-left: 4px;
-    margin-top: 6px;
+    margin-left: 8px;
+    margin-top: 9px;
   }
   .me-common-profile {
     margin-top: 60px;
   }
   .me-common-profile img {
     width: 70px;
+    border-radius: 41px;
+    margin-left: 7px;
     height: 70px;
-    padding-left: 10px;
   }
   .me-profile-col {
     padding-left: 10px;
@@ -183,7 +206,7 @@
     /*border-bottom: 1px solid #d9d9d9;*/
   }
   .me-profile-introduce span {
-    width: 30px;
+    width: 40px;
     display: block;
     margin-top: 4px;
     border: 1px solid #9c9c9c;

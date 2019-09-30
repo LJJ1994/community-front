@@ -196,21 +196,86 @@
     },
     name: 'search',
     methods: {
-      HideFooter () {
-        this.$store.state.footer.isShow = false
-      },
+      // HideFooter () {
+      //   this.$store.state.footer.isShow = false
+      // },
       goBack () {
-        this.$router.back()
-        this.$store.state.footer.isShow = true
+        this.$router.push("/")
+        // this.$store.state.footer.isShow = true
       }
     },
     created () {
-      this.HideFooter()
+      // this.HideFooter()
     }
   }
 </script>
 
 <style scoped>
+  /*动画部分*/
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: .5;
+      transform: translateY(-100px);
+      -webkit-transform: translateY(-100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+    }
+  }
+  @keyframes fadeInDown {
+    0% {
+      opacity: .5;
+      transform: translateX(100px);
+      -ms-transform: translateX(100px);
+      -webkit-transform: translateX(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+      -ms-transform: translateX(0);
+      -webkit-transform: translateX(0);
+    }
+  }
+  .fadeInDown {
+    animation: fadeInDown .5s;
+    -webkit-animation: fadeInDown .5s;
+  }
+  @-webkit-keyframes fadeOutTop {
+
+  }
+  @keyframes fadeOutTop {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+      -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-100px);
+      -webkit-transform: translateX(-100px);
+      -ms-transform: translateX(-100px);
+    }
+  }
+  @-webkit-keyframes fadeOutTop {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+      -webkit-transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100px);
+      -webkit-transform: translateY(-100px);
+    }
+  }
+  .fadeOutTop {
+    animation: fadeOutTop .5s;
+    -webkit-animation: fadeOutTop .5s;
+  }
+
   /*搜索框部分*/
   .search {
     height: 100%;

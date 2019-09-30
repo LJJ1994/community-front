@@ -55,9 +55,7 @@
           <li class="suggest-group-item">
             <div class="suggest-avator-text">
               <span class="suggest-image"><img src="../../assets/images/avator.svg" alt=""></span>
-              <div class="suggest-item-middle">
-                <span>海贼王一生推</span>
-              </div>
+              <p>呵呵</p>
             </div>
             <div class="suggest-item-btn">
               <span>关注</span>
@@ -274,7 +272,6 @@ export default {
   }
   .suggest-group-item {
     height: 60px;
-    line-height: 60px;
     width: 100%;
     position: relative;
     overflow: hidden;
@@ -289,6 +286,7 @@ export default {
     overflow: hidden;
   }
   .suggest-image {
+    display: inline-block;
     width: 79px;
     height: 60px;
     float: left;
@@ -305,11 +303,14 @@ export default {
     font-size: 14px;
   }
   .suggest-item-middle span {
-    padding: 0;
-
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    font-size: 10px;
   }
   .suggest-item-btn {
     float: right;
+    margin-top: 20px;
   }
   .suggest-item-btn span {
     margin-right: 10px;
