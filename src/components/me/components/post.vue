@@ -11,7 +11,7 @@
 <!--                <span class="user">上海影视文化有限公司</span>-->
               </div>
             </div>
-            <cube-button @click="deleteBtn(post_id)" class="post-delete-btn">
+            <cube-button @click="deleteBtn(post_id)" class="post-delete-btn" v-show="isLoginUser">
               <p id="post_id">{{ item.post_id }}</p>
               <img src="../../../assets/images/delete.svg" alt="">
             </cube-button>
@@ -57,6 +57,10 @@
         default () {
           return []
         }
+      },
+      isLoginUser: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {

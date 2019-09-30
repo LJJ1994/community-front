@@ -3,15 +3,15 @@
     <div class="post-detail-header">
       <Row>
         <Col span="4">
-          <img src="../../assets/images/kuohao.svg" alt="" @click="goBack">
+          <img src=".././../assets/images/kuohao.svg" alt="" @click="goBack">
         </Col>
         <Col span="20">
           <p class="post-title" v-show="!showName">帖子详情</p>
           <div class="avator-name" v-show="showName">
-            <img src="../../assets/images/avator.svg" alt="">
+            <img :src="postCommons.avatar_url" alt="">
             <div class="post-user-name">
-              <span>{{ userName }}</span>
-              <p>{{ publishTime }}</p>
+              <span>{{ postCommons.username }}</span>
+              <p>{{ postCommons.create_time }}</p>
             </div>
             <span class="post-header-followed-btn" v-show="isFollow">已关注</span>
             <span class="post-header-nofollow-btn" v-show="!isFollow">关注</span>
@@ -23,11 +23,11 @@
       <div class="post-wrapper-header">
         <Row>
           <Col span="4">
-            <img src="../../assets/images/avator.svg" alt="" @click="goBack">
+            <img :src="postCommons.avatar_url" alt="" @click="goBack">
           </Col>
           <Col span="16">
-            <p class="post-header-username">{{ userName }}</p>
-            <span class="post-publish-time">{{ publishTime }}</span>
+            <p class="post-header-username">{{ postCommons.username }}</p>
+            <span class="post-publish-time">{{ postCommons.create_time }}</span>
           </Col>
           <Col span="4">
             <span class="post-followed-btn" v-show="isFollow">已关注</span>
@@ -36,12 +36,16 @@
         </Row>
       </div>
       <div class="post-content-wrapper">
-        <p class="post-content-main">
-          这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容
-        </p>
-        <span class="post-content-img"><img src="../../assets/images/pangxie.jpeg" alt=""></span>
+        <div class="item-content-video">
+          {{ postCommons.content }}
+          <div class="item-images-group" v-show="postCommons.img_url">
+            <ul class="item-content-images" v-for="(url, idx) in postCommons.img_url" :key="idx">
+              <li class="item-content-image"><img :src="url" alt=""></li>
+            </ul>
+          </div>
       </div>
-      <span class="post-content-browse">{{ browses }}次阅读</span>
+      <span class="post-content-browse">{{ postCommons.like_counts }}次阅读</span>
+    </div>
     </div>
   </div>
 </template>
@@ -49,13 +53,18 @@
 <script>
   export default {
     name: 'postCommon',
+    props: {
+      postCommons: {
+        type: Object,
+        default: function () {
+          return {}
+        }
+      }
+    },
     data () {
       return {
-        publishTime: '一小时前',
         showName: false,
-        userName: '小姐姐收割机',
         isFollow: true,
-        browses: 1000
       }
     },
     methods: {
@@ -202,14 +211,26 @@
     font-size: 13px;
     border-radius: 5px;
   }
-  .post-content-main {
-    margin: 5px 10px;
+  .post-item .item-content .item-content-video {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333333;
+    padding-left: 6px;
   }
-  .post-content-img {
-    display: block;
-    margin-left: 10px;
-    margin-right: 10px;
+
+  .item-images-group {
+    position: relative;
+    overflow: hidden;
+  }
+  .item-content-image {
+    float: left;
+    display: inline-block;
     margin-top: 10px;
+    margin-left: 5px;
+    width: 96px;
+    height: 96px;
   }
   .post-content-browse {
     display: block;

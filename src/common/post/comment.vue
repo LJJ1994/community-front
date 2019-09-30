@@ -5,19 +5,17 @@
           <Col span="4">
             <span class="post-comment-avatar"><img src="../../assets/images/girl2.svg" alt=""></span>
           </Col>
-          <Col span="16">
+          <Col span="14">
             <div class="post-user-profile">
               <p class="post-comment-username">{{ userName }}</p>
               <p class="post-comment-time">{{ commentTime }}</p>
             </div>
           </Col>
-          <Col span="4">
-            <div class="post-like-btn">
-              <span class="post-like-left">{{ likeCount }}</span>
-              <span class="post-like-right">
+          <Col span="6">
+            <p class="comment-like-count">{{likeCount}}</p>
+            <span class="post-like-right">
               <img src="../../assets/images/like.svg" alt="">
             </span>
-            </div>
           </Col>
         </Row>
         <Row>
@@ -56,7 +54,7 @@
         userName: '发呆大傻子',
         commentTime: '50分钟前',
         replyCount: 30,
-        content: "我服了,　这确实是评论内容我服了,　这确实是评论内容我服了,　这确实是评论内容我服了,　这确实是评论内容我服了,　这确实是评论内容我服了,　这确实是评论内容我服了,　这确实是评论内容"
+        content: "我服了,　这确实是评论内容我服了,内容我服了,　这确实是评论内容"
       }
     }
   }
@@ -92,6 +90,12 @@
     font-size: 10px;
     color: #d9d9d9;
   }
+  .comment-like-count {
+    display: inline-block;
+    margin-top: 7px;
+    margin-left: 15px;
+    font-size: 14px;
+  }
   .post-like-btn {
     margin-top: 5px;
     margin-right: 5px;
@@ -104,10 +108,12 @@
     float: left;
   }
   .post-like-right {
-    display: block;
+    display: inline-block;
     float: right;
     width: 20px;
     height: 20px;
+    margin-top: 2px;
+    margin-right: 16px;
   }
   .comment-content {
     margin-top: 5px;

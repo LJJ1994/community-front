@@ -10,7 +10,7 @@
                   <p class="follow-time">1小时前</p>
                 </div>
               </Col>
-              <Col span="4">
+              <Col span="4" class="follow-item-right">
                 <span class="follow-btn">关注</span>
               </Col>
             </Row>
@@ -184,11 +184,13 @@
     margin-top: 3px;
     font-size: 12px;
   }
+  .follow-item-right{
+    margin-top: 4px;
+  }
   .follow-btn {
-    display: block;
-    padding-left: 8px;
-    width: 40px;
-    height: 20px;
+    display: inline-block;
+    padding: 2px;
+    font-size: 14px;
     border: 1px solid#ff4b69;
     color: #ff4b69;
     border-radius: 4px;

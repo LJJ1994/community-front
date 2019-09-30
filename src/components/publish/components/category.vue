@@ -14,7 +14,16 @@
               <p class="item-middle-tile">{{ item.name }}</p>
               <p class="item-middle-hot">{{ item.comment_count }}条热门内容</p>
             </div>
-            <input type="text" v-model="category_id" class="item-right-select">
+            <div class="item-right-select">
+              <label :for="item.category_id" v-show="!hasSelected">选我</label>
+              <label :for="item.category_id" v-show="hasSelected">不选我</label>
+              <input type="radio"
+                     v-model="picked"
+                     :id="item.category_id"
+                     :value="item.category_id"
+                     @change="selectHandler(item.name)"
+                     class="item-right-select-btn">
+            </div>
           </li>
         </ul>
       </div>
@@ -27,12 +36,27 @@
     data() {
       return {
         searchInput: '',
-        category_id: '选我',
-        category: []
+        hasSelected: false,
+        picked: '',
+        category: [],
       };
     },
     methods: {
       goBack () {
+        this.$destroy()
+        this.$router.go(-1)
+      },
+      selectHandler (e) {
+        console.log('e是什么',e) // 给绑定的处理函数传入category_name, 那么这里的e就是传入的参数, 然后触发vuex中的ChangeCategoryName函数,更新相应的值
+        console.log('pick id', this.picked)
+        // 因为用户只能选择一个话题, 那么用户在选择某个话题后, 直接跳转到发布页面
+        // 考虑用户可能不选择话题直接发布, 那么picked数组最多只有一个元素, 1: 要么选择一个话题 0: 要么不选择话题
+        // 同时更新vuex中的category_id, category_name, 以便发布页面的选择话题的相应属性能够实时更新
+
+        let category_name = e ? e : '添加话题'
+        this.$store.commit('ChangeCategoryName', category_name)
+        this.$store.commit('ChangeCategoryId', this.picked)
+        this.$destroy()
         this.$router.back()
       },
       GetCategory () {
@@ -149,5 +173,13 @@
     color: #ff4b69;
     padding: 2px 2px;
     outline: none;
+  }
+  .item-right-select-btn {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
   }
 </style>

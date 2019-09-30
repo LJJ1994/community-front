@@ -10,7 +10,7 @@
           <el-col :span="14" class="me-top-item">
             <div class="me-profile">
               <div class="me-profile-wrapper" v-if="hasLogin">
-                <router-link to="/me/detail" @click.native="HideFooter">
+                <router-link :to="{name: 'MeDetail', params: {user_id: user_id }}" @click.native="HideFooter">
                   <div class="me-has-login">
                     <h3 class="me-name">{{ username }}</h3>
                     <p class="me-introduce">{{ signature }}</p>
@@ -136,6 +136,7 @@ export default {
   },
   data () {
     return {
+      user_id: 0,
       like: 0,
       fans: 0,
       follow: 3,
@@ -164,6 +165,7 @@ export default {
         if (res.status === 200) {
           const data = res.data.data
 
+          self.user_id = data.id
           self.like = data.like ? data.like : 0
           self.fans = data.followers_count
           self.follow = data.followed_count

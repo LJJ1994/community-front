@@ -1,12 +1,10 @@
 <template>
   <div id="app" :style="{height: '100%'}">
     <div class="main" :style="{height: '100%'}">
-<!--      <transition name="fade" enter-active-class="animated slideInDown"-->
-<!--                  leave-active-class="animated slideInUp"-->
-<!--                  :duration="100">-->
-<!--        <router-view></router-view>-->
-<!--      </transition>-->
-        <router-view></router-view>
+      <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
     </div>
     <footer-nav></footer-nav>
   </div>
@@ -18,7 +16,8 @@ export default {
   name: 'App',
   data () {
     return {
-      route: this.$route.path === '/publish'
+      route: this.$route.path === '/publish',
+      // cachePages: ['Publish', 'category']
     }
   },
   components: {

@@ -1,4 +1,5 @@
 <template>
+<!--  这是个人中心页面(需要登录)-->
   <div class="me-detail">
     <me-common :profile="profile"></me-common>
     <div class="me-detail-tab">

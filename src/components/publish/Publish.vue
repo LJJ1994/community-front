@@ -8,9 +8,10 @@
           <form ref="upload" enctype=”multipart/form-data”>
             <cube-textarea v-model="content" :maxlength="maxlength" placeholder="输入要说的话~"></cube-textarea>
             <input type="text" class="category-btn" v-model="category_id">
-            <router-link :to="{name: 'PublishCategory'}">
-              <button class="select-category" v-model="category_id">{{ selectCate }}</button>
+            <router-link to="/publish/category">
+              <button class="select-category" v-model="category_id">{{ category_name }}</button>
             </router-link>
+            <button class="delete-category" v-show="showDeleteBtn" @click.prevent="deleteCategory">删除</button>
             <input type="file" id="files" name="file" class="publish-file" multiple="multiple"><br>
             <label for="files" class="publish-file-btn">添加图片</label>
             <input type="submit" class="publish-btn" value="发布" @click.prevent="uploadHandler">
@@ -26,14 +27,37 @@
     data () {
       return {
         content: '',
-        maxlength: 120,
-        category_id: 2,
-        selectCate: '单曲循环'
+        maxlength: 120
       }
+    },
+    computed: {
+      category_id () {
+        return this.$store.state.category.category_id
+      },
+      category_name () {
+        return this.$store.state.category.category_name
+      },
+      showDeleteBtn () {
+        let categoryName = this.$store.state.category.category_name
+        if (categoryName === '添加话题') {
+          return false
+        } else {
+          return true
+        }
+      }
+    },
+    watch: {
+
     },
     methods: {
       goBack () {
+        this.$store.commit('DestroyCategory')  // 这里如果取消发布, 那么设置vuex里的category_id=0
+        this.$destroy()
         this.$router.back()
+      },
+      deleteCategory () {
+        const self = this
+        self.$store.commit('DestroyCategory')
       },
       uploadHandler () {
         const self = this
@@ -56,6 +80,7 @@
               duration: 2,
               content: res.data.errmsg,
               onClose: function () {  // 发送帖子成功时的回调
+                self.$destroy()  // 路由退出直接销毁组件，不然下次进入时会获取上一次缓存的数据，这就不好了。
                 self.$router.push('/')
               }
             })
@@ -114,6 +139,19 @@
     border: 1px solid #ff4b69;
     color: #ff4b69;
     background: #ffffff;
+    padding: 2px 5px;
+    font-size: 13px;
+  }
+  .delete-category {
+    outline: none;
+    display: inline-block;
+    margin-top: 9px;
+    margin-left: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ff4b69;
+    color: #ffffff;
+    background: #d9534f;
     padding: 2px 5px;
     font-size: 13px;
   }

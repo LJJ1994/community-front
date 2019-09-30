@@ -9,6 +9,7 @@ import Message from '@/components/message/Message'
 
 import Me from '@/components/me/Me'
 import MeDetail from '@/components/me/components/meDetail'
+import OtherDetail from '@/components/me/components/otherDetail'
 import MeEdit from '@/components/me/components/edit'
 import MeCollect from '@/components/me/components/collect'
 import MeHistory from '@/components/me/components/history'
@@ -60,13 +61,16 @@ const router = new Router({
           component: Publish,
           meta: {
             requiresAuth: true,
-            // keepAlive: true
-          }
+            keepAlive: true
+          },
         },
         {
           path: '/publish/category',
           name: 'PublishCategory',
-          component: PublishCategory
+          component: PublishCategory,
+          meta: {
+            keepAlive: true
+          }
         },
         {
           path: '/message',
@@ -92,12 +96,17 @@ const router = new Router({
           component: MeRegister
         },
         {
-          path: '/me/detail',
+          path: '/me/detail/:user_id',
           name: 'MeDetail',
           component: MeDetail,
           meta: {
             requiresAuth: true
           }
+        },
+        {
+          path: '/other/detail/:user_id',
+          name: 'OtherDetail',
+          component: OtherDetail
         },
         {
           path: '/me/collect',

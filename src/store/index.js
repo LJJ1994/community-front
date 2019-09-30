@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import UserMutation from './user/mutations'
+import CategoryMutation from './category/mutations'
+
+import CategoryGetter from './category/getters'
 
 Vue.use(Vuex)
 
@@ -23,8 +26,11 @@ const user = {
 const category = {
   state: {
     category_id: 0,
-    isSelected: false
-  }
+    category_name: '添加话题',
+    isSelected: false,
+  },
+  mutations: CategoryMutation,
+  getters: CategoryGetter
 }
 
 export default new Vuex.Store({
